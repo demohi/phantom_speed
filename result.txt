@@ -147,3 +147,5 @@ car.m.yiche.com/[a-zA-Z]+/$ , 202
 3g.dict.cn/([^/]{1,}/)*s\.php\?q=[^&]+$ , 141
 car.m.yiche.com/[a-zA-Z]+/$ , 237
 3g.dict.cn/([^/]{1,}/)*s\.php\?q=[^&]+$ , 176
+3g.dict.cn/([^/]{1,}/)*s\.php\?q=[^&]+$ , 222
+car.m.yiche.com/[a-zA-Z]+/$ , 579

@@ -8,6 +8,7 @@
   "dependencies": {
     "basset": "*",
     "line-reader": "*",
-    "bagpipe": "*"
+    "bagpipe": "*",
+    "async" : "*"
   }
 }
