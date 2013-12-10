@@ -4,11 +4,13 @@ var fs = require('fs');
 var Bagpipe = require('bagpipe');
 var async = require('async');
 var getUrlSpeed = function(url,callback){
-        var basset = new Basset(url[1],{ repeatNum: 1 });
+        var basset = new Basset(url[1],{ repeatNum: 10 });
         basset.on('end', function (result) {
             if(result.results[0]){
-                callback(false,result);
-                console.log('append to result.txt')
+	        var data = {};
+		data.url = url[1];
+		data.result = result.results;
+                callback(false,data);
                 fs.appendFile('result.txt', url[0]+" , "+result.results[0].values.onLoad+"\n", function (err) {
                     if (err) throw err;
                 });
@@ -25,13 +27,20 @@ var getUrlSpeed = function(url,callback){
         });
         basset.sniff();
 };
-
+var doResult = function(data){
+   var sum = 0
+   for(var i in data.result){
+       console.log(data.result[i]);
+       sum += data.result[i]['values']['onLoad'];
+   }
+   console.log(data.url+" onLoad:" +(sum/data.result.length));
+}
 var bagpipe = new Bagpipe(3);
 lineReader.eachLine('urls.txt', function(line, last) {
     var data = line.split("	");
-    bagpipe.push(test2,data,function(err,data){
+    bagpipe.push(getUrlSpeed,data,function(err,result){
         if(!err){
-            console.log(data);
+           doResult(result); 
         }
     });
 });
