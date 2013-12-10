@@ -1,0 +1,13 @@
+{
+  "name": "phantom-speed",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "basset": "*",
+    "line-reader": "*",
+    "bagpipe": "*"
+  }
+}
